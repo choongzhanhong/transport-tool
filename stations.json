@@ -1,0 +1,21 @@
+{
+  "stations": [
+    {
+      "name": "StationA",
+      "lines": ["Line1", "Line2"],
+      "neighbors": [
+        { "name": "StationB", "distance": 10 },
+        { "name": "StationC", "distance": 15 }
+      ]
+    },
+    {
+      "name": "StationB",
+      "lines": ["Line1"],
+      "neighbors": [
+        { "name": "StationA", "distance": 10 },
+        { "name": "StationC", "distance": 20 }
+      ]
+    }
+    // Add more stations with their data
+  ]
+}
