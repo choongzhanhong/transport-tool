@@ -1,5 +1,9 @@
 # Transport Fare Tool
-By zhan hong
+By Zhan Hong
+
+Check out the GitHub page: https://choongzhanhong.github.io/transport-tool/
+
+A work in progress.
 
 ## MRT data from:
 

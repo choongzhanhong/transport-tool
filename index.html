@@ -44,7 +44,19 @@
     
     <main>
         <section id="home">
-            <p>Click the tools.</p>
+            <p>
+                This is a work in progress. Check out the <a href="#blog">blog</a>
+                for updates!
+            </p>
+            <p>
+                <a href="https://github.com/choongzhanhong/transport-tool" target="_blank">
+                GitHub repo
+                </a>
+            </p>
+            <p>
+                by Zhan Hong
+            </p>
+
         </section>
 
         <section id="calendar">
@@ -120,6 +132,79 @@
         </section>
         <section id="blog">
                 <h1>Blog</h1>
+
+                <!--
+                <article>
+                    <h2>Title<time datetime="2023-11-18">18.11.2023</time></h2>
+                    <p>
+                        Text here
+                    </p>
+                </article>
+                -->
+
+                <article>
+                    <h2>MRT Algorithm... Done?<time datetime="2023-11-24">24.11.2023</time></h2>
+                    <p>
+                        I first tasked myself with working out the algorithm
+                        to determine the distance between public transport stops.
+                        I got the bus stop data easily, but took some time to find
+                        data on MRT stations. Specifically, I wanted the rail distance
+                        between stations. This is different from the absolute georgraphic
+                        distance between stations. 
+                        Fares are calculated based on distance travelled, and I checked
+                        that this was indeed the distance the train travels.
+                    </p>
+                    <p>
+                        I eventually found data on 
+                        <a href="https://sgwiki.com/wiki/List_of_Distance_between_Stations" target="_blank">SGWiki</a>
+                        formatted in a neat table, detailing the distance between
+                        adjacent stations. That's perfect!
+                    </p>
+                    <p>
+                        I parsed the data from the table into a csv,
+                        then into a JSON, and finally put that JSON into a .js file.
+                        Feel free to take a look at it in the GitHub repo.
+                        This was because I had found some difficulty trying to fetch
+                        the data, but if I load it as a js script it's perfectly fine,
+                        especially since the data is static.
+                    </p>
+                    <p>
+                        Anyway, for those who are learning beginner Data Structures and
+                        Algorithms, this might be a textbook solution. I modeled each
+                        pair of stations as an edge (e.g. Jurong East - Bukit Batok)
+                        with its weight being the distance between stations. The graph
+                        could then be read as such. 
+                    </p>
+                    <p>
+                        Afterwards, the shortest path between two points is found via Dijkstra's algorithm. I did this because that's apparently
+                        how MRT fares are calculated. For example, if you're going from Jurong East to Raffles Place,
+                        you could go via the East-West line or the North-South line. Since you only tap in and out at the
+                        entry/exit stations respectively, there is no way to tell the route you took. So, the system
+                        calculates the shortest path between the start and end (entry and exit gantries) to
+                        determine the fare.
+                    </p>
+                    <P>
+                        Yes, I used ChatGPT. I didn't quite want to re-write everything
+                        from scratch. I think this is a neat application of AI to
+                        speed up processes.
+                    </P>
+                    <p>
+                        I tested it against the 
+                        <a href="https://www.lta.gov.sg/content/ltagov/en/map/fare-calculator.html" target="_blank">
+                        LTA Fare Calculator</a> which seemed to be mostly correct. However, there were certain errors.
+                        Some values differed when calculating, for example, the distance between Bukit Batok and Choa Chu Kang (4.4km)
+                        Looking at the distance between adjacent stops in this path: Bukit Batok - Bukit Gombak (1.2km),
+                        and Bukit Gombak - Choa Chu Kang (3.3km), one can find an addition error.
+                        My algorithm gives 1.2km + 3.3km = 4.5km, which is expected.
+                        I have yet to figure out a reason for the discrepancy, but I'm going to continue first.
+                    </p>
+                    <p>
+                        Moving on, I will try to create a function to calculate the distance for a bus trip (should be easier).
+                        Then, a fare price calculator using the distances from these functions. I will also
+                        have to create a front-end interface soon.
+                        Side note, I should consider moving to a different blogging platform.
+                    </p>
+                </article>
 
                 <article>
                     <h2>Starting Out<time datetime="2023-11-18">18.11.2023</time></h2>
