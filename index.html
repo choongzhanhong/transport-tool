@@ -1,9 +1,8 @@
 <!DOCTYPE html>
-  <html lang="en">
-  <head>
+<html lang="en">
+<head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,initial-scale=1">
-    <script type="text/javascript" src="read_graph.js"></script>
     <title>Transport Tool</title>
     <meta name="description" content="A tool to asssist in public transport stuff
     in Singapore.">
@@ -22,7 +21,14 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Sans Condensed">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Mono">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=IBM Plex Serif">
-  </head>
+
+    <!-- load data first -->
+    <script src="data/stations.js" defer></script>
+
+    <!-- load scripts later -->
+    <script src="scripts/graph.js" defer></script>
+    <script src="scripts/read_graph.js" defer></script>
+</head>
 
 <body>
     <header>
