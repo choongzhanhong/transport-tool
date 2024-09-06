@@ -22,4 +22,9 @@ class Location {
 		this.latitude = latitude;
 		this.longitude = longitude;
 	}
+	
+	toString() {
+		return `${this.name} (${this.latitude}, ${this.longitude})`;
+	}
+	
 }

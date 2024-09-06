@@ -54,9 +54,12 @@ function searchAddress(input, queryNum) {
 			console.log(result);
 			
 			if (queryNum == 1) {
-			
+				location_1.setLocation(result.SEARCHVAL, result.ADDRESS, result.LATITUDE, result.LONGITUDE);
+				document.getElementById(`response_1`).textContent = location_1.toString();
+			} else {
+				location_2.setLocation(result.SEARCHVAL, result.ADDRESS, result.LATITUDE, result.LONGITUDE);
+				document.getElementById(`response_2`).textContent = location_2.toString();
 			}
-			document.getElementById(`response_${queryNum}`).textContent = JSON.stringify(data, null, 2);
 		})
 		.catch(error => {
 			console.error('Error during search:', error);
