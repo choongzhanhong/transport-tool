@@ -15,7 +15,6 @@ document.getElementById('searchButton_2').addEventListener('click', function() {
 	
 var location_1 = new Location();
 var location_2 = new Location();
-console.log(location_1);
 	
 /**
  * Makes OneMap API call to search address based on input
@@ -60,6 +59,7 @@ function searchAddress(input, queryNum) {
 				location_2.setLocation(result.SEARCHVAL, result.ADDRESS, result.LATITUDE, result.LONGITUDE);
 				document.getElementById(`response_2`).textContent = location_2.toString();
 			}
+			updateMap(location_1, location_2);
 		})
 		.catch(error => {
 			console.error('Error during search:', error);
