@@ -3,7 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
   <title>Transport Tool</title>
+  <script src="appscripts/authorization.js" defer></script>
   <script src="appscripts/Location.js" defer></script>
   <script src="appscripts/mapframe.js" defer></script>
   <script src="appscripts/buttons.js" defer></script>
@@ -12,6 +14,7 @@
 <body>
 	<h1>Transport Tool</h1>
 
+	<h2>Transport Directions</h2>
 	<h2>Address 1</h2>
 	<input type="text" id="searchQuery_1" placeholder="Enter postal code">
 	<button id="searchButton_1">Search</button>
@@ -22,6 +25,13 @@
 	<button id="searchButton_2">Search</button>
 	<pre id="response_2"></pre>
 	
+	<h3>DO IT</h3>
+	<button id="calculateFareButton" disabled>Calculate Fare!</button>
+	<b>Fare:</b>
+	<pre id="result_fare"></pre>
+	
+	<br>
+	
 	<iframe 
 		id = "mapFrame"
 		src="https://www.onemap.gov.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&popupWidth=200" 
@@ -31,6 +41,8 @@
 		frameborder="0" 
 		allowfullscreen="allowfullscreen">
 	</iframe>
+	
+	
 	
 	<hr>
 	<a href="blog.html">blog</a>

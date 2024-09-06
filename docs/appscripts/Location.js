@@ -16,6 +16,10 @@ class Location {
         return this.longitude;
     }
 	
+	get isValid() {
+		return (this.latitude && this.longitude);
+	}
+	
 	setLocation(name, address, latitude, longitude) {
 		this.name = name;
 		this.address = address;
@@ -23,8 +27,19 @@ class Location {
 		this.longitude = longitude;
 	}
 	
+	resetLocation() {
+		this.name = "";
+		this.address = "";
+		this.latitude = "";
+		this.longitude = "";
+	}
+	
 	toString() {
 		return `${this.name} (${this.latitude}, ${this.longitude})`;
+	}
+	
+	getLatLongString() {
+		return `${this.latitude},${this.longitude}`;
 	}
 	
 }
