@@ -61,7 +61,7 @@ function daysInMonth(anyDateInMonth) {
 function calculateTotalFares() {
 	// Sunday - Saturday [0, 6]
 	let day = TODAY.getDay();
-	let total = TOTAL_DAYS - day;
+	let total = 30; // TOTAL_DAYS - day;
 	let totalFare = 0;
 	while (total--) {
 		console.log(totalFare);
