@@ -8,19 +8,23 @@
   <script src="appscripts/authorization.js" defer></script>
   <script src="appscripts/Location.js" defer></script>
   <script src="appscripts/mapframe.js" defer></script>
+  <script src="appscripts/calendar.js" defer></script>
   <script src="appscripts/buttons.js" defer></script>
 </head>
 
 <body>
 	<h1>Transport Tool</h1>
+	<div>
+		
+	</div>
 
 	<h2>Transport Directions</h2>
-	<h2>Address 1</h2>
+	<h3>Address 1</h3>
 	<input type="text" id="searchQuery_1" placeholder="Enter postal code">
 	<button id="searchButton_1">Search</button>
 	<pre id="response_1"></pre>
 	
-	<h2>Address 2</h2>
+	<h3>Address 2</h3>
 	<input type="text" id="searchQuery_2" placeholder="Enter postal code">
 	<button id="searchButton_2">Search</button>
 	<pre id="response_2"></pre>
@@ -42,13 +46,94 @@
 		allowfullscreen="allowfullscreen">
 	</iframe>
 	
+	<h2>The next step</h2>
+	<small>Note calendar starts from today.</small>
+    <table id="calendar">
+        <thead>
+			<tr>
+				<th colspan="7" id="calendarHead">Month</th>
+			</tr>
+            <tr>
+                <th>S</th>
+                <th>M</th>
+                <th>T</th>
+                <th>W</th>
+                <th>T</th>
+                <th>F</th>
+                <th>S</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 6 rows for the dates -->
+            <tr>
+                <td id="day1"></td>
+                <td id="day2"></td>
+                <td id="day3"></td>
+                <td id="day4"></td>
+                <td id="day5"></td>
+                <td id="day6"></td>
+                <td id="day7"></td>
+            </tr>
+            <tr>
+                <td id="day8"></td>
+                <td id="day9"></td>
+                <td id="day10"></td>
+                <td id="day11"></td>
+                <td id="day12"></td>
+                <td id="day13"></td>
+                <td id="day14"></td>
+            </tr>
+            <tr>
+                <td id="day15"></td>
+                <td id="day16"></td>
+                <td id="day17"></td>
+                <td id="day18"></td>
+                <td id="day19"></td>
+                <td id="day20"></td>
+                <td id="day21"></td>
+            </tr>
+            <tr>
+                <td id="day22"></td>
+                <td id="day23"></td>
+                <td id="day24"></td>
+                <td id="day25"></td>
+                <td id="day26"></td>
+                <td id="day27"></td>
+                <td id="day28"></td>
+            </tr>
+            <tr>
+                <td id="day29"></td>
+                <td id="day30"></td>
+                <td id="day31"></td>
+                <td id="day32"></td>
+                <td id="day33"></td>
+                <td id="day34"></td>
+                <td id="day35"></td>
+            </tr>
+            <tr>
+                <td id="day36"></td>
+                <td id="day37"></td>
+                <td id="day38"></td>
+                <td id="day39"></td>
+                <td id="day40"></td>
+                <td id="day41"></td>
+                <td id="day42"></td>
+            </tr>
+        </tbody>
+    </table>
 	
 	
-	<hr>
-	<a href="blog.html">blog</a>
-	<br>
-	<small>Using OneMap API</small>
-	<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" style="height:20px;width:20px;"/>&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>
+	
+	<!-- Footer -->
+	<footer>
+		<hr>
+		<a href="blog.html">blog</a>
+		<br>
+		<small>Using OneMap API</small>
+		<img src="https://www.onemap.gov.sg/web-assets/images/logo/om_logo.png" style="height:20px;width:20px;"/>&nbsp;<a href="https://www.onemap.gov.sg/" target="_blank" rel="noopener noreferrer">OneMap</a>&nbsp;&copy;&nbsp;contributors&nbsp;&#124;&nbsp;<a href="https://www.sla.gov.sg/" target="_blank" rel="noopener noreferrer">Singapore Land Authority</a>
+		<br>
+		By zhan hong (<a href="mailto:choongzhanhong@gmail.com">contact</a>)
+	</footer>
 
 </body>
 </html>

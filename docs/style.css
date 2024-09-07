@@ -10,3 +10,29 @@
 .blogpost time {
 	color: #555;
 }
+
+table {
+	width: 30%;
+	border-collapse: collapse;
+	font-family: monospace;
+}
+
+th, td {
+	border: 1px solid #aaa;
+	width: 14.28%; /* 7 columns */
+	height: 2em; /* Calendar cell height */
+	text-align: center;
+}
+
+th {
+	color: #fff;
+	background-color: #000;
+}
+
+td {
+	color: #aaa;
+}
+
+td:empty {
+	background-color: #aaa;
+}
