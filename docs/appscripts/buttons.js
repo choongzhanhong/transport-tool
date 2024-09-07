@@ -112,7 +112,7 @@ function getRouting(location1, location2) {
 	})
 	.then(data => {
 		console.log('Search results:', data);
-		document.getElementById(`result_fare`).textContent = data.plan.itineraries[0].fare;
+		document.getElementById(`fareResult`).textContent = data.plan.itineraries[0].fare;
 	})
 	.catch(error => {
 		console.error('Error during search:', error);

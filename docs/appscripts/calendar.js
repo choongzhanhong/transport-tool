@@ -4,6 +4,7 @@ const TOTAL_DAYS = 42; // 42 days displayed on a 6-row, 7-day calendar.
 
 // Fares for:     S  M  T  W  T  F  S
 var dailyFares = [0, 0, 0, 0, 0, 0, 0];
+document.getElementById("dailyFareTable").textContent = dailyFares.toString();
 
 // Call upon initialisation
 document.getElementById("calendarHead").textContent = TODAY.toLocaleString('default', {
@@ -12,6 +13,20 @@ document.getElementById("calendarHead").textContent = TODAY.toLocaleString('defa
 	
 populateCalendar();
 console.log("Populated calendar.");
+
+document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", function() {
+	console.log("Checked fares");
+	let fare = document.getElementById("fareResult").textContent;
+	fare = parseFloat(fare);
+	for (let i = 0; i < 7; i++) {
+		if (document.getElementById(`checkDay${i}`).checked) {
+			dailyFares[i] += fare;
+		}
+	}
+	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
+});
+
+document.getElementById("calculateTotalFareButton").addEventListener("click", calculateTotalFares);
 
 function populateCalendar() {
 	// Sunday - Saturday [0, 6]
@@ -43,9 +58,17 @@ function daysInMonth(anyDateInMonth) {
 /**
  * Calculate for the next few days (not necessarily just 30)
  */
-function calculateTotalFares(dailyFares) {
-	let i = 40;
-	while (i--) {
-		
+function calculateTotalFares() {
+	// Sunday - Saturday [0, 6]
+	let day = TODAY.getDay();
+	let total = TOTAL_DAYS - day;
+	let totalFare = 0;
+	while (total--) {
+		console.log(totalFare);
+		totalFare += dailyFares[day];
+		day = (++day) % 7;
 	}
+	totalFare = parseFloat(totalFare.toFixed(2));
+	document.getElementById("totalFareResult").textContent = totalFare;
+	return totalFare;
 }

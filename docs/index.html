@@ -28,12 +28,6 @@
 	<input type="text" id="searchQuery_2" placeholder="Enter postal code">
 	<button id="searchButton_2">Search</button>
 	<pre id="response_2"></pre>
-	
-	<h3>DO IT</h3>
-	<button id="calculateFareButton" disabled>Calculate Fare!</button>
-	<b>Fare:</b>
-	<pre id="result_fare"></pre>
-	
 	<br>
 	
 	<iframe 
@@ -45,6 +39,28 @@
 		frameborder="0" 
 		allowfullscreen="allowfullscreen">
 	</iframe>
+	
+	<br>
+	
+	<!-- TODO Just let the person fill in their own fare.-->
+	<h3>Calculate fare of the trip</h3>
+	<button id="calculateFareButton" disabled>Calculate Fare!</button>
+	<br>
+	<b>Fare:</b>
+	<pre>$<span id="fareResult">0</span></pre>
+	
+	<label><input type="checkbox" id="checkDay0"> Sun</label>
+    <label><input type="checkbox" id="checkDay1"> Mon</label>
+    <label><input type="checkbox" id="checkDay2"> Tue</label>
+    <label><input type="checkbox" id="checkDay3"> Wed</label>
+    <label><input type="checkbox" id="checkDay4"> Thu</label>
+    <label><input type="checkbox" id="checkDay5"> Fri</label>
+    <label><input type="checkbox" id="checkDay6"> Sun</label>
+
+    <button id = "daysOfWeekCheckboxButton">Check Selected Days</button>
+	
+	<pre id="dailyFareTable"></pre>
+	
 	
 	<h2>The next step</h2>
 	<small>Note calendar starts from today.</small>
@@ -122,7 +138,10 @@
         </tbody>
     </table>
 	
-	
+	<button id="calculateTotalFareButton">Calculate Total Expenditure</button>
+	<br>
+	<b>Total until end of displayed calendar:</b>
+	<pre>$<span id="totalFareResult">0</span></pre>
 	
 	<!-- Footer -->
 	<footer>
