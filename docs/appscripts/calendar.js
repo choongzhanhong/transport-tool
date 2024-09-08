@@ -30,16 +30,22 @@ document.getElementById("calculateTotalFareButton").addEventListener("click", ca
 
 function populateCalendar() {
 	// Sunday - Saturday [0, 6]
-	let day = TODAY.getDay();
+	let day = TODAY.getDate();
 	let total = TOTAL_DAYS - day;
 	let lastDay = daysInMonth(TODAY);
+	let daysHighlighted = 0;
 	
 	// Start at day = [..6], 
-	for (let i = 1 + day, currentDay = 1 + day; currentDay <= TOTAL_DAYS; i++, currentDay++) {
+	for (let i = day, currentDay = day; currentDay <= TOTAL_DAYS; i++, currentDay++) {
 		if (i > lastDay) {
 			i = 1;
 		}
-		document.getElementById(`day${currentDay}`).textContent = i;
+		let currentCell = document.getElementById(`day${currentDay}`);
+		currentCell.textContent = i;
+		if (daysHighlighted < 30) {
+			currentCell.style.backgroundColor = "lightblue";
+			daysHighlighted++;
+		}
 	}
 }
 
