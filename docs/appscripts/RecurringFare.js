@@ -11,9 +11,14 @@ class RecurringFare {
 		this.dailyFares[index] += amount;
 	}
 	
+	getFare(index) {
+		return this.dailyFares[index];
+	}
+	
 	resetFares() {
 		this.dailyFares = [0, 0, 0, 0, 0, 0, 0];
 	}
+
 	
 	// Keep it this way because this string format takes things quite literally.
 	toString() {

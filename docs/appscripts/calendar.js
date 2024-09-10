@@ -89,7 +89,7 @@ function calculateTotalFares() {
 	let totalFare = 0;
 	while (total--) {
 		console.log(totalFare);
-		totalFare += dailyFares[day];
+		totalFare += dailyFares.getFare(day);
 		day = (++day) % 7;
 	}
 	totalFare = parseFloat(totalFare.toFixed(2));
