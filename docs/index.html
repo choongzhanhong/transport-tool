@@ -7,6 +7,7 @@
   <title>Transport Tool</title>
   <script src="appscripts/authorization.js" defer></script>
   <script src="appscripts/Location.js" defer></script>
+  <script src="appscripts/RecurringFare.js" defer></script>
   <script src="appscripts/mapframe.js" defer></script>
   <script src="appscripts/calendar.js" defer></script>
   <script src="appscripts/buttons.js" defer></script>
@@ -14,6 +15,12 @@
 
 <body>
 	<h1>Transport Tool</h1>
+	<nav>
+	<a class="active" href="index.html">concessionpass</a> / 
+	<a href="blog.html">blog</a> / 
+	<a href="tips.html">tips</a>
+	</nav>
+	
 	<div class="blogpost">
 		<h3>How does this work?</h3>
 		<p>
@@ -74,15 +81,37 @@
 		<p>Here, you take the fare you calculated above and plot it into the calendar.
 		It can be a recurring trip (weekly), or an ad-hoc (one-time) trip.</p>
 		
-		<label><input type="checkbox" id="checkDay0"> Sun</label><br>
-		<label><input type="checkbox" id="checkDay1"> Mon</label><br>
-		<label><input type="checkbox" id="checkDay2"> Tue</label><br>
-		<label><input type="checkbox" id="checkDay3"> Wed</label><br>
-		<label><input type="checkbox" id="checkDay4"> Thu</label><br>
-		<label><input type="checkbox" id="checkDay5"> Fri</label><br>
-		<label><input type="checkbox" id="checkDay6"> Sat</label><br>
-		<button id = "daysOfWeekCheckboxButton">Check Selected Days</button>
-		<pre id="dailyFareTable"></pre>
+		<b>Fare:</b> $ <input type="text" id="fareInput" placeholder="Input custom fare here">
+		<button id="getFareFromAboveButton">Input fare from above</button>
+		<br>
+		
+		<h3>Recurring Trips</h3>
+		<p>If this is a recurring trip, you can check the boxes below on the days
+		it occurs. <i>E.g.</i> if you're working from Monday to Friday in the office,
+		you probably take this trip twice a day, 5 times a week.
+		Once you have checked the boxes, click the button below to add it to your trips.
+		</p>
+		
+		<div class="flex-container">
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay0"> Sun</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay1"> Mon</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay2"> Tue</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay3"> Wed</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay4"> Thu</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay5"> Fri</label>
+		<label class="dailyCheckbox"><input type="checkbox" id="checkDay6"> Sat</label>
+		</div>
+		<br>
+		<button id = "daysOfWeekCheckboxButton">Add recurring trips</button>
+		
+		<pre><b>Recurring trips:</b><br><span id="dailyFareTable"></span></pre>
+		<button id = "resetRecurringTripsButton">Reset all to $0</button>
+		
+		<h3>Ad-hoc trips</h3>
+		<p>
+			If you expect to have a trip in the upcoming month that isn't recurring
+			(<i>e.g.</i> a dinner appointment), this section is under construction.
+		</p>
 	
 	</section>
 	
