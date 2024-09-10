@@ -4,7 +4,22 @@ const TOTAL_DAYS = 42; // 42 days displayed on a 6-row, 7-day calendar.
 
 // Fares for:     S  M  T  W  T  F  S
 const dailyFares = new RecurringFare();
+const singleFares = new SingleFare();
+
 document.getElementById("dailyFareTable").textContent = dailyFares.toString();
+document.getElementById("singleFareTable").textContent = singleFares.toString();
+
+// Constrain Ad-hoc date picker to only the next 42 days.
+const datePicker = document.getElementById('dateInput');
+
+// Get today's date
+datePicker.min = TODAY.toISOString().split('T')[0];
+
+// Calculate the date 42 days from today
+const maxDate = new Date();
+maxDate.setDate(maxDate.getDate() + 42);
+datePicker.max = maxDate.toISOString().split('T')[0];
+
 
 // Call upon initialisation
 document.getElementById("calendarHead").textContent = TODAY.toLocaleString('default', {
@@ -19,7 +34,15 @@ document.getElementById("resetRecurringTripsButton").addEventListener("click", f
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
 	});
 	
+document.getElementById("resetSingleTripsButton").addEventListener("click", function () {
+	singleFares.resetFares();
+	document.getElementById("singleFareTable").textContent = singleFares.toString();
+	});
 	
+	
+/**
+ * Add recurring fares
+ */
 document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", function() {
 	console.log("Checked fares");
 	let fare = document.getElementById("fareInput").value;
@@ -30,6 +53,29 @@ document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", fu
 		}
 	}
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
+});
+
+/**
+ * Add ad-hoc fares
+ * Takes the difference in days between today and the selected date
+ * The date picker limits dates to next 42 days, so won't go overboard
+ */
+document.getElementById("adHocDateButton").addEventListener("click", function() {
+	// Simply make a new date object
+	let inputtedDate = new Date(document.getElementById("dateInput").value);
+	
+	// get today at midnight to make a comparison
+	let todayMidnight  = new Date(TODAY.getFullYear(), TODAY.getMonth(), TODAY.getDate());
+	
+	// Find the difference between two dates in milliseconds
+	let diff = inputtedDate - todayMidnight;
+	diff = Math.floor(diff/(24 * 60 * 60 * 1000)); // conversion from milliseconds
+	
+	let fare = document.getElementById("fareInput").value;
+	fare = parseFloat(fare);
+	singleFares.addFare(fare, diff);
+	
+	document.getElementById("singleFareTable").textContent = singleFares.toString();
 });
 
 document.getElementById("calculateTotalFareButton").addEventListener("click", calculateTotalFares);
@@ -87,10 +133,14 @@ function calculateTotalFares() {
 	let day = TODAY.getDay();
 	let total = 30; // TOTAL_DAYS - day;
 	let totalFare = 0;
+	
+	// Add recurring fares
 	while (total--) {
 		console.log(totalFare);
 		totalFare += dailyFares.getFare(day);
 		day = (++day) % 7;
+		
+		totalFare += singleFares.getFare(total);
 	}
 	totalFare = parseFloat(totalFare.toFixed(2));
 	document.getElementById("totalFareResult").textContent = totalFare;
