@@ -21,6 +21,7 @@
 	<a href="tips.html">tips</a>
 	</nav>
 	
+	<h2>concession pass calculator</h2>
 	<div class="blogpost">
 		<h3>How does this work?</h3>
 		<p>
@@ -67,8 +68,16 @@
 				
 		<!-- TODO Just let the person fill in their own fare.-->
 		<h3>Calculate fare of the trip</h3>
-		<small>Currently takes the first suggested public transport trip based on
-		OneMap's pathfinding algorithm.</small>
+		<small>
+			Currently takes the first suggested public transport trip based on
+			OneMap's pathfinding algorithm. This requires an API Key which is not provided
+			right now.
+			<br>
+			You can also input your own fare amount
+			in the next section. Feel free to use another tool, like the
+			<a href="https://www.lta.gov.sg/content/ltagov/en/map/fare-calculator.html"
+			target="_blank">LTA fare calculator</a>.
+		</small>
 		<br>
 		<button id="calculateFareButton" disabled>Calculate Fare!</button>
 		<br>
@@ -88,10 +97,12 @@
 		<br>
 		
 		<h3>Recurring Trips</h3>
-		<p>If this is a recurring trip, you can check the boxes below on the days
-		it occurs. <i>E.g.</i> if you're working from Monday to Friday in the office,
-		you probably take this trip twice a day, 5 times a week.
-		Once you have checked the boxes, click the button below to add it to your trips.
+		<p>
+			If this is a recurring trip, you can check the boxes below on the days
+			it occurs. <i>E.g.</i> if you're working from Monday to Friday in the office,
+			you probably take this trip twice a day. So, check the boxes from Monday
+			to Friday, and then press "Add recurring trips" two times.
+			Once you have checked the boxes, click the button below to add it to your trips.
 		</p>
 		
 		<div class="flex-container">

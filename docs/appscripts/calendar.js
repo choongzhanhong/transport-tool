@@ -39,21 +39,30 @@ document.getElementById("calculateTotalFareButton").addEventListener("click", ca
  * Starts with the current date and fills out all rows.
  */
 function populateCalendar() {
-	let day = TODAY.getDate();		// Should return the date (0 to 31).
-	let total = TOTAL_DAYS - day;	
-	let lastDay = daysInMonth(TODAY);
+	let currentTODAY = new Date();				// Make a copy of TODAY.
+	let day = TODAY.getDate();		  		// Should return the date (0 to 31).
+	let startingID = TODAY.getDay(); 		// Returns 0..6, Sunday to Sat.
+	let total = TOTAL_DAYS - startingID;  	// Total number of cells to populate
+	let lastDay = daysInMonth(TODAY);		// last day of the month (28, 30, or 31)
 	let daysHighlighted = 0;
 	
-	// Start at day = [..6], 
-	for (let i = day, currentDay = day; currentDay <= TOTAL_DAYS; i++, currentDay++) {
-		if (i > lastDay) {
-			i = 1;
-		}
-		let currentCell = document.getElementById(`day${currentDay}`);
-		currentCell.textContent = i;
+	for (let i = 0; i <= total; i++) {
+		let currentCell = document.getElementById(`day${startingID}`);
+		currentCell.textContent = day;
+		
 		if (daysHighlighted < 30) {
 			currentCell.style.backgroundColor = "lightblue";
 			daysHighlighted++;
+		}
+		
+		startingID++;
+		day++;
+		if (day > lastDay) {
+			day = 1;
+			// the next month's total number of days. Do it once because
+			// max probably do it twice (if jan 31, feb 28 days, then march)
+			currentTODAY.setMonth(currentTODAY.getMonth() + 1);
+			lastDay = daysInMonth(currentTODAY);
 		}
 	}
 }

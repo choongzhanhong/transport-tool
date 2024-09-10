@@ -82,10 +82,11 @@ label.dailyCheckbox {
 	padding: 0 0.5em;
 }
 
-a { 
+/* Navbar */
+nav a {
 	color: #aaa;
 }
 
-a.active {
+nav a.active {
 	color: #000;
 }
