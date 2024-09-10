@@ -39,3 +39,4 @@ jspm_packages/
 *.njsproj
 *.sln
 docs/appscripts/authorization.js
+onemap_api.txt

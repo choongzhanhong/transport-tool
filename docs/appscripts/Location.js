@@ -35,7 +35,7 @@ class Location {
 	}
 	
 	toString() {
-		return `${this.name} (${this.latitude}, ${this.longitude})`;
+		return `${this.name}`;
 	}
 	
 	getLatLongString() {

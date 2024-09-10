@@ -1,7 +1,11 @@
+body {
+	padding: 1em;
+}
+
 .blogpost {
-	width: 30%;
+	max-width: 30em;
 	border: 1px solid #000;
-	padding: 1em 2em 1em 2em;
+	padding: 1em 2em;
 	margin-bottom: 2em;
 	box-shadow: 10px 10px;
 	background-color: #FFFDD0;
@@ -35,4 +39,38 @@ td {
 
 td:empty {
 	background-color: #aaa;
+}
+
+/* Stores each section*/
+section {
+	box-shadow: 10px 10px #faf;
+	padding: 1em 2em;
+	margin-bottom: 1em;
+	background-color: #fdf;
+	max-width: 700px;
+}
+
+h2 {
+	color: white;
+	background-color: black;
+	padding: 5px 15px;
+}
+
+.flex-container {
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.flex-container > div {
+	padding: 0.5em;
+	align-self: center;
+	max-width: 50%;
+}
+
+.flex-container pre {
+	text-wrap: wrap;
+}
+
+iframe {
+	margin: 1em 0;
 }

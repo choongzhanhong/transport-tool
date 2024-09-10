@@ -25,130 +25,149 @@
 		</p>
 	</div>
 
-	<h2>Transport Directions</h2>
-	<h3>Address 1</h3>
-	<input type="text" id="searchQuery_1" placeholder="Enter postal code">
-	<button id="searchButton_1">Search</button>
-	<pre id="response_1"></pre>
-	
-	<h3>Address 2</h3>
-	<input type="text" id="searchQuery_2" placeholder="Enter postal code">
-	<button id="searchButton_2">Search</button>
-	<pre id="response_2"></pre>
-	<br>
-	
-	<iframe 
-		id = "mapFrame"
-		src="https://www.onemap.gov.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&popupWidth=200" 
-		height="450" 
-		width="450" 
-		scrolling="no" 
-		frameborder="0" 
-		allowfullscreen="allowfullscreen">
-	</iframe>
-	
-	<br>
-	
-	<!-- TODO Just let the person fill in their own fare.-->
-	<h3>Calculate fare of the trip</h3>
-	<button id="calculateFareButton" disabled>Calculate Fare!</button>
-	<br>
-	<b>Fare:</b>
-	<pre>$<span id="fareResult">0</span></pre>
-	
-	<label><input type="checkbox" id="checkDay0"> Sun</label>
-    <label><input type="checkbox" id="checkDay1"> Mon</label>
-    <label><input type="checkbox" id="checkDay2"> Tue</label>
-    <label><input type="checkbox" id="checkDay3"> Wed</label>
-    <label><input type="checkbox" id="checkDay4"> Thu</label>
-    <label><input type="checkbox" id="checkDay5"> Fri</label>
-    <label><input type="checkbox" id="checkDay6"> Sun</label>
+	<section>
+		<h2>Transport Directions</h2>
+		<p>In this section, you can calculate the public transport fare between
+		two addresses.</p>
+		
+		
+		<div class="flex-container">
+			<div>
+				<h3>Address 1 (Start)</h3>
+				<input type="text" id="searchQuery_1" placeholder="Enter postal code">
+				<button id="searchButton_1">Search</button>
+				<pre id="response_1"></pre>
+			</div>
+			<div>==></div>
+			<div>
+				<h3>Address 2 (End)</h3>
+				<input type="text" id="searchQuery_2" placeholder="Enter postal code">
+				<button id="searchButton_2">Search</button>
+				<pre id="response_2"></pre>
+			</div>
+		</div>
+		
+		<iframe 
+			id = "mapFrame"
+			src="https://www.onemap.gov.sg/amm/amm.html?mapStyle=Default&zoomLevel=15&popupWidth=200" 
+			scrolling="no" 
+			height=300px
+			width=100%
+			frameborder="0" 
+			allowfullscreen="allowfullscreen">
+		</iframe>
+				
+		<!-- TODO Just let the person fill in their own fare.-->
+		<h3>Calculate fare of the trip</h3>
+		<small>Currently takes the first suggested public transport trip based on
+		OneMap's pathfinding algorithm.</small>
+		<br>
+		<button id="calculateFareButton" disabled>Calculate Fare!</button>
+		<br>
+		<pre><b>Fare:</b> $<span id="fareResult">0</span></pre>
 
-    <button id = "daysOfWeekCheckboxButton">Check Selected Days</button>
+	</section>
+
 	
-	<pre id="dailyFareTable"></pre>
+	<section>
+		<h2>Add fare to calendar</h2>
+		<p>Here, you take the fare you calculated above and plot it into the calendar.
+		It can be a recurring trip (weekly), or an ad-hoc (one-time) trip.</p>
+		
+		<label><input type="checkbox" id="checkDay0"> Sun</label><br>
+		<label><input type="checkbox" id="checkDay1"> Mon</label><br>
+		<label><input type="checkbox" id="checkDay2"> Tue</label><br>
+		<label><input type="checkbox" id="checkDay3"> Wed</label><br>
+		<label><input type="checkbox" id="checkDay4"> Thu</label><br>
+		<label><input type="checkbox" id="checkDay5"> Fri</label><br>
+		<label><input type="checkbox" id="checkDay6"> Sat</label><br>
+		<button id = "daysOfWeekCheckboxButton">Check Selected Days</button>
+		<pre id="dailyFareTable"></pre>
 	
+	</section>
 	
-	<h2>The next step</h2>
-	<small>Note calendar starts from today.</small>
-    <table id="calendar">
-        <thead>
-			<tr>
-				<th colspan="7" id="calendarHead">Month</th>
-			</tr>
-            <tr>
-                <th>S</th>
-                <th>M</th>
-                <th>T</th>
-                <th>W</th>
-                <th>T</th>
-                <th>F</th>
-                <th>S</th>
-            </tr>
-        </thead>
-        <tbody>
-            <!-- 6 rows for the dates -->
-            <tr>
-                <td id="day1"></td>
-                <td id="day2"></td>
-                <td id="day3"></td>
-                <td id="day4"></td>
-                <td id="day5"></td>
-                <td id="day6"></td>
-                <td id="day7"></td>
-            </tr>
-            <tr>
-                <td id="day8"></td>
-                <td id="day9"></td>
-                <td id="day10"></td>
-                <td id="day11"></td>
-                <td id="day12"></td>
-                <td id="day13"></td>
-                <td id="day14"></td>
-            </tr>
-            <tr>
-                <td id="day15"></td>
-                <td id="day16"></td>
-                <td id="day17"></td>
-                <td id="day18"></td>
-                <td id="day19"></td>
-                <td id="day20"></td>
-                <td id="day21"></td>
-            </tr>
-            <tr>
-                <td id="day22"></td>
-                <td id="day23"></td>
-                <td id="day24"></td>
-                <td id="day25"></td>
-                <td id="day26"></td>
-                <td id="day27"></td>
-                <td id="day28"></td>
-            </tr>
-            <tr>
-                <td id="day29"></td>
-                <td id="day30"></td>
-                <td id="day31"></td>
-                <td id="day32"></td>
-                <td id="day33"></td>
-                <td id="day34"></td>
-                <td id="day35"></td>
-            </tr>
-            <tr>
-                <td id="day36"></td>
-                <td id="day37"></td>
-                <td id="day38"></td>
-                <td id="day39"></td>
-                <td id="day40"></td>
-                <td id="day41"></td>
-                <td id="day42"></td>
-            </tr>
-        </tbody>
-    </table>
-	
-	<button id="calculateTotalFareButton">Calculate Total Expenditure</button>
-	<br>
-	<b>Total fare for the next 30 days starting today:</b>
-	<pre>$<span id="totalFareResult">0</span></pre>
+	<section>
+	<h2>Your total fares this month</h2>
+		<small>Note calendar starts from today.</small>
+		<table id="calendar">
+			<thead>
+				<tr>
+					<th colspan="7" id="calendarHead">Month</th>
+				</tr>
+				<tr>
+					<th>S</th>
+					<th>M</th>
+					<th>T</th>
+					<th>W</th>
+					<th>T</th>
+					<th>F</th>
+					<th>S</th>
+				</tr>
+			</thead>
+			<tbody>
+				<!-- 6 rows for the dates -->
+				<tr>
+					<td id="day1"></td>
+					<td id="day2"></td>
+					<td id="day3"></td>
+					<td id="day4"></td>
+					<td id="day5"></td>
+					<td id="day6"></td>
+					<td id="day7"></td>
+				</tr>
+				<tr>
+					<td id="day8"></td>
+					<td id="day9"></td>
+					<td id="day10"></td>
+					<td id="day11"></td>
+					<td id="day12"></td>
+					<td id="day13"></td>
+					<td id="day14"></td>
+				</tr>
+				<tr>
+					<td id="day15"></td>
+					<td id="day16"></td>
+					<td id="day17"></td>
+					<td id="day18"></td>
+					<td id="day19"></td>
+					<td id="day20"></td>
+					<td id="day21"></td>
+				</tr>
+				<tr>
+					<td id="day22"></td>
+					<td id="day23"></td>
+					<td id="day24"></td>
+					<td id="day25"></td>
+					<td id="day26"></td>
+					<td id="day27"></td>
+					<td id="day28"></td>
+				</tr>
+				<tr>
+					<td id="day29"></td>
+					<td id="day30"></td>
+					<td id="day31"></td>
+					<td id="day32"></td>
+					<td id="day33"></td>
+					<td id="day34"></td>
+					<td id="day35"></td>
+				</tr>
+				<tr>
+					<td id="day36"></td>
+					<td id="day37"></td>
+					<td id="day38"></td>
+					<td id="day39"></td>
+					<td id="day40"></td>
+					<td id="day41"></td>
+					<td id="day42"></td>
+				</tr>
+			</tbody>
+		</table>
+		
+		<button id="calculateTotalFareButton">Calculate Total Expenditure</button>
+		<br>
+		<b>Total fare for the next 30 days starting today:</b>
+		<pre>$<span id="totalFareResult">0</span></pre>
+	</section>
 	
 	<!-- Footer -->
 	<footer>
