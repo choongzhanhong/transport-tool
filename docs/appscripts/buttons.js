@@ -17,6 +17,10 @@ const calculateFareButton = document.getElementById("calculateFareButton");
 calculateFareButton.addEventListener('click', function() {
 	getRouting(location_1, location_2);
 });
+
+document.getElementById("getFareFromAboveButton").addEventListener("click", function () {
+	document.getElementById("fareInput").value = document.getElementById(`fareResult`).textContent;
+});
 	
 var location_1 = new Location();
 var location_2 = new Location();

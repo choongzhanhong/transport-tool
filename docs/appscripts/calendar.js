@@ -3,7 +3,7 @@ console.log(TODAY);
 const TOTAL_DAYS = 42; // 42 days displayed on a 6-row, 7-day calendar.
 
 // Fares for:     S  M  T  W  T  F  S
-var dailyFares = [0, 0, 0, 0, 0, 0, 0];
+const dailyFares = new RecurringFare();
 document.getElementById("dailyFareTable").textContent = dailyFares.toString();
 
 // Call upon initialisation
@@ -14,13 +14,19 @@ document.getElementById("calendarHead").textContent = TODAY.toLocaleString('defa
 populateCalendar();
 console.log("Populated calendar.");
 
+document.getElementById("resetRecurringTripsButton").addEventListener("click", function () {
+	dailyFares.resetFares();
+	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
+	});
+	
+	
 document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", function() {
 	console.log("Checked fares");
-	let fare = document.getElementById("fareResult").textContent;
+	let fare = document.getElementById("fareInput").value;
 	fare = parseFloat(fare);
 	for (let i = 0; i < 7; i++) {
 		if (document.getElementById(`checkDay${i}`).checked) {
-			dailyFares[i] += fare;
+			dailyFares.addFare(fare, i); //[i] += fare;
 		}
 	}
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
@@ -28,10 +34,13 @@ document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", fu
 
 document.getElementById("calculateTotalFareButton").addEventListener("click", calculateTotalFares);
 
+/**
+ * Populates the HTML calendar table with the days of the month.
+ * Starts with the current date and fills out all rows.
+ */
 function populateCalendar() {
-	// Sunday - Saturday [0, 6]
-	let day = TODAY.getDate();
-	let total = TOTAL_DAYS - day;
+	let day = TODAY.getDate();		// Should return the date (0 to 31).
+	let total = TOTAL_DAYS - day;	
 	let lastDay = daysInMonth(TODAY);
 	let daysHighlighted = 0;
 	
