@@ -36,6 +36,25 @@
 			allowing them to calculate the fares spent in a 30-day span starting
 			from that day.
 		</p>
+		<p>
+			A stretch goal would be to allow the user to plan far ahead. Say,
+			they may have more trips planned next month. The calendar is currently
+			limited to display up to 6 weeks' worth of days. To extend it to
+			an entire year wouldn't be impossible, but representing that data
+			visually might be the challenge. I cannot at the moment justify cases
+			where one might want to calculate, say, 4 months in the future, but 
+			I can see how planning into the next 2 months makes sense. If you mostly
+			have trips planned in the later half of month 1, and the earlier half of month 2,
+			it makes sense to activate your pass only in the half of month 1 and have
+			it carry over its duration to month 2.
+		</p>
+		<p>
+			If you look into the source HTML, you will see that the table columns
+			and rows are not dynamically generated; they are given IDs instead.
+			(fortunately, I didn't type it all out myself, I used AI...)
+			This is a very rudimentary approach, but scaling up might need me to 
+			generate table rows using JavaScript. That is worth exploring.
+		</p>
 	</div>
 	
 	<div class="blogpost">
