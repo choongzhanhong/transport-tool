@@ -38,10 +38,6 @@ td {
 	color: #aaa;
 }
 
-td:empty {
-	background-color: #aaa;
-}
-
 /* Stores each section*/
 section {
 	box-shadow: 10px 10px #faf;
@@ -49,6 +45,10 @@ section {
 	margin-bottom: 1em;
 	background-color: #fdf;
 	max-width: 700px;
+}
+
+.hidden {
+	display: none;
 }
 
 h2 {

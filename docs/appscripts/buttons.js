@@ -123,3 +123,16 @@ function getRouting(location1, location2) {
 		document.getElementById(`response_${queryNum}`).textContent = 'An error occurred.';
 	});
 }
+
+// Show/Hide buttons in each section.
+document.querySelectorAll('.hideButton').forEach(button => {
+    button.addEventListener('click', function() {
+        const section = this.closest('section');
+        section.querySelectorAll('*:not(h2):not(.hideButton)').forEach(child => {
+            child.classList.toggle('hidden');
+        });
+		
+		// Toggle button text
+        this.textContent = this.textContent === "Hide" ? "Show" : "Hide";
+    });
+});
