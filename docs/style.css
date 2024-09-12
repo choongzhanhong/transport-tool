@@ -1,5 +1,6 @@
 body {
 	padding: 1em;
+	font-family: "ibm plex sans", sans-serif;
 }
 
 .blogpost {
@@ -16,9 +17,9 @@ body {
 }
 
 table {
-	width: 30%;
 	border-collapse: collapse;
 	font-family: monospace;
+	width: 100%;
 }
 
 th, td {
