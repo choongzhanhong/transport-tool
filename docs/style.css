@@ -26,6 +26,7 @@ th, td {
 	border: 1px solid #aaa;
 	width: 14.28%; /* 7 columns */
 	text-align: center;
+	background-color: white;
 }
 
 th {
