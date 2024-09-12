@@ -1,6 +1,7 @@
 const TODAY = new Date();
 console.log(TODAY);
-const TOTAL_DAYS = 42; // 42 days displayed on a 6-row, 7-day calendar.
+const TOTAL_DAYS = 42; 			// 42 days displayed on a 6-row, 7-day calendar.
+const DURATION_OF_PASS = 30;	// The pass should be 30 days, if I'm not wrong
 
 // Fares for:     S  M  T  W  T  F  S
 const dailyFares = new RecurringFare();
@@ -56,6 +57,7 @@ document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", fu
 	}
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
 	showFaresOnCalendar();
+	calculateTotalFares();
 });
 
 const selectedDate = document.getElementById("selectedDate");
@@ -82,7 +84,9 @@ document.getElementById("adHocDateButton").addEventListener("click", function() 
 	singleFares.addFare(fare, diff);
 	
 	document.getElementById("singleFareTable").textContent = singleFares.toString();
+	
 	showFaresOnCalendar();
+	calculateTotalFares();
 });
 
 document.getElementById("calculateTotalFareButton").addEventListener("click", calculateTotalFares);
@@ -103,7 +107,7 @@ function populateCalendar() {
 		let currentCell = document.getElementById(`day${startingID}`);
 		currentCell.textContent = day;
 		
-		if (daysHighlighted < 30) {
+		if (daysHighlighted < DURATION_OF_PASS) {
 			currentCell.style.color = "red";
 			daysHighlighted++;
 		}
@@ -138,7 +142,7 @@ function daysInMonth(anyDateInMonth) {
 function calculateTotalFares() {
 	// Sunday - Saturday [0, 6]
 	let day = TODAY.getDay();
-	let total = 30; // TOTAL_DAYS - day;
+	let total = DURATION_OF_PASS;
 	let totalFare = 0;
 	
 	// Add recurring fares
