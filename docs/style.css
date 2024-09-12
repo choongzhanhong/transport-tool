@@ -25,7 +25,6 @@ table {
 th, td {
 	border: 1px solid #aaa;
 	width: 14.28%; /* 7 columns */
-	height: 2em; /* Calendar cell height */
 	text-align: center;
 }
 
@@ -36,6 +35,7 @@ th {
 
 td {
 	color: #aaa;
+	height: 4em;
 }
 
 /* Stores each section*/
@@ -90,4 +90,8 @@ nav a {
 
 nav a.active {
 	color: #000;
+}
+
+#selectedDate {
+	color: red;
 }

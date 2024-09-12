@@ -29,6 +29,8 @@ document.getElementById("calendarHead").textContent = TODAY.toLocaleString('defa
 populateCalendar();
 console.log("Populated calendar.");
 
+showFaresOnCalendar();
+
 document.getElementById("resetRecurringTripsButton").addEventListener("click", function () {
 	dailyFares.resetFares();
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
@@ -53,7 +55,11 @@ document.getElementById("daysOfWeekCheckboxButton").addEventListener("click", fu
 		}
 	}
 	document.getElementById("dailyFareTable").textContent = dailyFares.toString();
+	showFaresOnCalendar();
 });
+
+const selectedDate = document.getElementById("selectedDate");
+selectedDate.innerText = TODAY.toDateString();
 
 /**
  * Add ad-hoc fares
@@ -76,6 +82,7 @@ document.getElementById("adHocDateButton").addEventListener("click", function() 
 	singleFares.addFare(fare, diff);
 	
 	document.getElementById("singleFareTable").textContent = singleFares.toString();
+	showFaresOnCalendar();
 });
 
 document.getElementById("calculateTotalFareButton").addEventListener("click", calculateTotalFares);
@@ -85,9 +92,9 @@ document.getElementById("calculateTotalFareButton").addEventListener("click", ca
  * Starts with the current date and fills out all rows.
  */
 function populateCalendar() {
-	let currentTODAY = new Date();				// Make a copy of TODAY.
+	let currentTODAY = new Date();			// Make a copy of TODAY.
 	let day = TODAY.getDate();		  		// Should return the date (0 to 31).
-	let startingID = TODAY.getDay(); 		// Returns 0..6, Sunday to Sat.
+	let startingID = TODAY.getDay() + 1; 		// Returns 0..6, Sunday to Sat.
 	let total = TOTAL_DAYS - startingID;  	// Total number of cells to populate
 	let lastDay = daysInMonth(TODAY);		// last day of the month (28, 30, or 31)
 	let daysHighlighted = 0;
@@ -97,7 +104,7 @@ function populateCalendar() {
 		currentCell.textContent = day;
 		
 		if (daysHighlighted < 30) {
-			currentCell.style.backgroundColor = "lightblue";
+			currentCell.style.color = "red";
 			daysHighlighted++;
 		}
 		
@@ -126,7 +133,7 @@ function daysInMonth(anyDateInMonth) {
 }
 
 /**
- * Calculate for the next few days (not necessarily just 30)
+ * Calculate for the next 30 days
  */
 function calculateTotalFares() {
 	// Sunday - Saturday [0, 6]
@@ -145,4 +152,29 @@ function calculateTotalFares() {
 	totalFare = parseFloat(totalFare.toFixed(2));
 	document.getElementById("totalFareResult").textContent = totalFare;
 	return totalFare;
+}
+
+/**
+ * Show the fares in the calendar itself
+ */
+function showFaresOnCalendar() {
+	console.log("doing it boss");
+	let startingID = TODAY.getDay() + 1; 		// Returns 0..6, Sunday to Sat.
+	let total = TOTAL_DAYS - startingID;  	// Total number of cells to populate
+	let dayOfWeek = startingID - 1;
+	
+	for (let i = 0; i <= total; i++) {
+		let currentCell = document.getElementById(`dayFare${startingID}`);
+		let amount = dailyFares.getFare(dayOfWeek);
+		amount += singleFares.getFare(i); 
+		
+		if (amount > 0) {
+			currentCell.style.color = "black";
+		}
+		currentCell.textContent = "$" + amount.toFixed(2);
+		
+		startingID++;
+		dayOfWeek = (dayOfWeek + 1) % 7;
+		
+	}
 }

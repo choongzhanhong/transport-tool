@@ -120,7 +120,6 @@ function getRouting(location1, location2) {
 	})
 	.catch(error => {
 		console.error('Error during search:', error);
-		document.getElementById(`response_${queryNum}`).textContent = 'An error occurred.';
 	});
 }
 
