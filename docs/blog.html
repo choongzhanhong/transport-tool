@@ -20,6 +20,54 @@
 	</nav>
 	
 	<h2>blog</h2>
+	<div class="blogpost">
+		<h3>commentary on data structures</h3>
+		<time datetime="2024-09-13">2024-09-13</time>
+		<p>
+			I'm going to take a break from this for a while as I will be traveling.
+			This could be a good time to talk about the "architecture" of this tool
+			so far. 
+		</p>
+		<p>
+			I make use of OOP, like a class for Locations to store the name,
+			and importantly the latitude and longitude. The other information
+			may come in handy next time.
+		</p>
+		<p>
+			The Recurring fares and Single fares are also classes with pretty much
+			the same methods (wow so polymorphic?? hahahaha).
+			Recurring fare is simple enough, it wraps around an
+			array of size 7, which corresponds to the fares on each day of the week.
+			It lines up with the day indexing of the Javascript Date object, which
+			puts Sunday at index 0, Monday at 1, and so on.
+		</p>
+		<p>
+			Single fares is more interesting, as it makes use of the dynamic-sized
+			trait of Javascript arrays. Index 0 represents the fares on the first day,
+			which would be the current day, index 1 representing fares tomorrow, so on.
+			I figured there's not much need (at the moment) to track fares on
+			days that have passed (but from an expenditure-tracking perspective, possibly).
+		</p>
+		<p>
+			I began with a naive approach. Each array element is undefined until
+			it is randomly accessed to have a value written in. Upon retrieval,
+			a zero is returned if it's undefined or zero, which is why having a "get"
+			method is important and having the class wrap around the data.
+		</p>
+		<p>
+			This naive approach works to me, because there are only so many days in a year,
+			and if one were to track expenses for the next decade, it would still take a trivially
+			small amount of memory, with each item in the array storing a float, multiplied by 365
+			and however many years... though practically, one wouldn't go so far.
+		</p>
+		<p>
+			More can be done in the future... currently the mechanism for translating the 
+			date to index is still performed imperatively. I could include another layer
+			of processing to take in a Date object and find the fare from a given date.
+			It might make it more scalable and adjustable.
+		</p>
+	</div>
+	
 	
 	<div class="blogpost">
 		<h3>some user experience improvements</h3>
