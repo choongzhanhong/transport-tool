@@ -1,0 +1,18 @@
+.calendar {
+	background: #fff;
+	color: #000;
+	border: 5px ridge #fff;
+	padding: 5px 10px 5px 10px;
+}
+
+/*table cells*/
+table.calendar-grid, table.calendar-grid td, table.calendar-grid th {
+	background: #eff;
+	border: 3px ridge #fff;
+	border-collapse: collapse;
+	padding: 10px;
+}
+
+.daycell-muted {
+	color: #aaa;
+}

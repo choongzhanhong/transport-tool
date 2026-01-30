@@ -1,10 +1,10 @@
-// Topmost container for calendar data
-// import CalendarGrid from "./CalendarGrid"
+import CalendarGrid from "./CalendarGrid"
 import "./calendar.css"
 
-const WEEKDAYS = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-
-// month is zero-indexed.
+/**
+* Topmost container for calendar functionality.
+* Month is zero indexed.
+*/
 function Calendar({year, month}) {
     const monthLabel = new Date(year, month, 1).toLocaleString(undefined, {
         year: "numeric",
@@ -12,7 +12,16 @@ function Calendar({year, month}) {
     });
 
     return (
-        <h2>{monthLabel}</h2>
+		<div className="calendar">
+			<div className="calendar-header">
+			<h2 className="calendar-title">{monthLabel}</h2>
+			</div>
+			
+			<div className="calendar-body">
+				<CalendarGrid year={year} month={month}/>
+			</div>
+			
+		</div>
     )
 }
 
